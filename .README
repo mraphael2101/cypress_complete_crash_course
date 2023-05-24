@@ -10,6 +10,8 @@
 - Cypress supports Chrome, Edge, Firefox and Electron (which uses Chrome for rendering and is more stable
   for automation. Electron is bundled with Cypress already). The other browsers rely on the version of the
   browser that you already have installed on your local machine
+- A unique feature of Cypress is that it provides us with the capability to click on hidden elements
+  on a page without having to make them visible if they are present in the DOM
 
 To setup the Cypress project do the following:
 1.) Download and install npm from nodejs.org/en/download
@@ -111,3 +113,8 @@ Cypress JS (Synchronous managed by Cypress to run Asynchronously)
   Hence, resulting in whether or not the browser will open the content in a new tab
   or a new one. The architecture is different to selenium as it is handled in a completely
   different way
+- Cypress has the ability to click on hidden elements with mouse over by using the invoke
+  method and JQuery functions
+
+Traversing through elements
+- Traversing to a sibling is possible using the next() method but it only works with get()

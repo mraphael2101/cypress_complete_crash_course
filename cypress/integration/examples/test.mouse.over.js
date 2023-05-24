@@ -15,6 +15,12 @@ describe("Mouse Over Test Suite", function () {
         cy.contains('Top').click()
         cy.url().should('include','top')
 
+        cy.go('back')
+
+        // Cypress allows you to directly click on hidden elements forceably
+        // if they are present without the need to hover over them
+        // {force: true} will disable error checking
+        cy.contains('Top').click({force: true})
     })
 
 })
