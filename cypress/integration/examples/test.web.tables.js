@@ -1,9 +1,9 @@
 describe("Web Tables Test Suite", function () {
 
     // TODO Scan the table for a particular column to find the text by parsing
-    // all the column values using the css locator and traverse through the list.
-    // Access the sibling using the next() method,and assign the value by
-    // resolving the promise
+    //  all the column values using the css locator and traverse through the list.
+    //  Access the sibling using the next() method,and assign the value by
+    //  resolving the promise
 
     it("Test to parse WebTables", function () {
         cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
