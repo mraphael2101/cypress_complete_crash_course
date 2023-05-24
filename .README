@@ -1,0 +1,113 @@
+- Cypress is npm based
+- Cypress has an automatic wait capability which makes test automation easier
+- Embeds Screenshots for every event (before/after) which can be traversed in the Cypress test runner
+- Cypress can mock API responses out of the box (injects mock response into the browser)
+- Unlike Selenium, from an architectural perspective, Cypress has no Proxy Server which interacts
+  as an intermediary with the Web Browser. Instead, Cypress operates directly from inside the Web Browser
+  at runtime; altering network requests/responses on the fly
+- Cypress can interact with the FE and BE application
+- Cypress is promoting Mocha as the testing framework of choice
+- Cypress supports Chrome, Edge, Firefox and Electron (which uses Chrome for rendering and is more stable
+  for automation. Electron is bundled with Cypress already). The other browsers rely on the version of the
+  browser that you already have installed on your local machine
+
+To setup the Cypress project do the following:
+1.) Download and install npm from nodejs.org/en/download
+2.) Make sure that usr/local/bin is on your path by entering $PATH
+3.) If you modify .bash_profile by appending /usr/local/bine/node then make sure that you save this globally
+    source ~/.bash_profile
+4.) Create a package.json file in the root directory by typing:
+    npm -i init
+5.) npm install cypress
+6.) To open the Cypress Test Runner do the following:
+    ./node_modules/.bin/cypress install (required only once)
+    node_modules/.bin/cypress open
+7.) Cypress Test Runner can be used to inspect the elements. Click on the target icon (to open the selector
+    playground)
+8.) Click on Settings -> Project Settings to add properties like where to save screenshots.
+    If it is already populated then the value displayed is the default one.
+    Updating the property in cypress.config.js will override the default property value.
+
+
+- The Cypress Test Runner has two modes which are:
+  a) End-to-end testing browser automation
+  b) Component testing -> Used for integration and unit testing
+  Launching either mode from the GUI adds some config code to your project
+- In the JS world any test is referred to as a Spec file
+  a) Create your spec file under a sub-directory of the cypress package
+  b) Retrospectively update cypress.config.js with the following line in the e2e obj
+     to let the Test Runner know where the specs live
+     specPattern: 'cypress/integration/examples/*.js'
+  c) Click save all in WebStorm. The result of this action is that the test should have been discovered
+     by the Test Runner
+  d) Click on the link in the TestRunner to trigger test execution
+  e) You can switch between browsers by selecting the option from the drop-down in the top right
+     hand corner
+  f) You can run all your Cypress test cases with the run command in headless mode
+     ./node_modules/.bin/cypress run
+  g) If you want to run with the browser visible then you need to add the below argument
+     ./node_modules/.bin/cypress run --headed
+  h) If you want to run a specific test then
+     npx cypress run --spec "cypress/integration/examples/test.manipulating.locators.promises.aliases.js"
+  i) From WebStorm if you install the Cypress plugin then you can run the test in headless mode from
+     the IDE. Note that it will run in Electron unless you override it
+  j) If you want to run a specific test in chrome then
+     npx cypress run --spec "cypress/integration/examples/test.manipulating.locators.promises.aliases.js" --headed --browser chrome
+
+
+Mocha includes Chai
+- describe -> used to define a test suite
+- it -> refers to a test case
+
+Cypress library
+- cy is a global object from where you can invoke numerous commands i.e. similar to webdriver obj
+
+Fixtures
+- The directory recommended by Cypress where all your test data is put
+
+Plugins
+- This directory is used for 3rd party plugins that listen
+
+Support
+- command.js is used for code that will be reused across multiple test cases i.e. common code
+
+Selectors
+- Cypress only supports CSS and JQuery selectors Examples:
+  #idname
+  .classname (if there is a space between the class name then replace with a dot)
+  .product:visible (a jquery selector allowing us to specify if elements are visible)
+  tagname.classname (if it will help to uniquely identify the element)
+  tagname[attribute=value]
+  tagname1 tagname2 (equivalent to xpath tagname1/tagname2)
+- instead of / give space for CSS
+
+Cypress JS (Synchronous managed by Cypress to run Asynchronously)
+- Cypress is asynchronous in nature and there is not guarantee in the sequence of execution, but
+  Cypress takes care of it
+- Cypress commands are asynchronous and get queued for execution at a later time. While commands are
+  executed, their subjects are yielded from one command to the next. This is because a lot of helpful
+  Cypress code runs between each command to ensure everything is in order.
+- Cypress is internally taking care of the promise and resolving it
+- In asynchronous every step returns a promise which is nothing but a state to reflect the step/code
+  that was executed. States:
+    -> Resolved - Step/code was executed
+    -> Rejected
+    -> Pending
+    Ideally, you have to wait until the promise is resolved. This can be determined by using the
+    .then() method, and then only it will move to the next step
+- Whatever is returned from the callback function becomes the new subject and will flow into the
+  following command (except for undefined).
+  cy.get("button").then(($btn) => {
+    const cls = $btn.attr("class")
+    // ...
+  })
+- text() is not a cypress command so you cannot use it outside a promise.
+  text() is a jquery method
+- Non Cypress commands cannot resolve promises by themselves. We need to manually
+  resolve them by using then()
+- Cypress has the capability to handle browser events such as Window alert on open
+  In the tutorial, when you click on the alert the window:alert event gets triggered
+- Cypress is capable of updating the DOM to remove attribute values such as target = "_blank".
+  Hence, resulting in whether or not the browser will open the content in a new tab
+  or a new one. The architecture is different to selenium as it is handled in a completely
+  different way
