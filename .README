@@ -12,6 +12,9 @@
   browser that you already have installed on your local machine
 - A unique feature of Cypress is that it provides us with the capability to click on hidden elements
   on a page without having to make them visible if they are present in the DOM
+- Cypress has provided a hack to work across domains using cy.origin() method which accepts two arguments which
+  are the url, and anonymous function which accepts the operations that you want to perform on the new domain.
+  Pre-requisite is that you must provide the url of the new domain as the first argument
 
 To setup the Cypress project do the following:
 1.) Download and install npm from nodejs.org/en/download
