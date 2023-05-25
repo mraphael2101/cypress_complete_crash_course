@@ -15,6 +15,10 @@
 - Cypress has provided a hack to work across domains using cy.origin() method which accepts two arguments which
   are the url, and anonymous function which accepts the operations that you want to perform on the new domain.
   Pre-requisite is that you must provide the url of the new domain as the first argument
+- Cypress customizable commands is a concept built into the framework which allows you to create reusable functions
+  in a single location which are accessible across all of your tests
+-
+
 
 To setup the Cypress project do the following:
 1.) Download and install npm from nodejs.org/en/download
