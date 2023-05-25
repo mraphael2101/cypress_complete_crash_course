@@ -2,6 +2,12 @@ describe("Mocha Hooks Demo Test Suite", function () {
 
     before(function () {
         // runs once before all tests in the block
+
+        //
+        cy.fixture('example').then(function (data) {
+            // Assign value to a class scope variable so that it is accessible outside the method
+            this.data = data
+        })
     })
 
     after(function () {
@@ -18,7 +24,9 @@ describe("Mocha Hooks Demo Test Suite", function () {
 
     it("Sample test case", function () {
         cy.visit("https://rahulshettyacademy.com/angularpractice/")
-        cy.get("form input.form-control:nth-child(1)").type('Bob')
+        cy.get("input[name=name]:nth-child(2)").type(this.data.name)
+        // An alternative css locator which works
+        // cy.get("div.form-group input[name=name]").type('Bob')
         cy.get('select').select('Female')
     })
 
