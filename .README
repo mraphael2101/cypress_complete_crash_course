@@ -121,3 +121,6 @@ Cypress JS (Synchronous managed by Cypress to run Asynchronously)
 
 Traversing through elements
 - Traversing to a sibling is possible using the next() method but it only works with get()
+
+Cypress Hooks
+- The in-built capability comes from Mocha
