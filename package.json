@@ -9,6 +9,7 @@
     "cy:spec": "cypress run --spec",
     "test fmwk": "cypress run --spec cypress/integration/examples/fmwk/*.js",
     "test samples": "cypress run --spec cypress/integration/examples/test/*.js",
+    "test samples headed chrome": "cypress run --spec cypress/integration/examples/test/*.js --headed --browser chrome",
     "test cli with arg": "npx cypress run --spec cypress/integration/examples/test/test.to.retrieve.environmental.property.js --env url=https://www.google.com --headed --browser chrome"
   },
   "author": "",

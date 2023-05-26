@@ -138,6 +138,7 @@ cypress/config.js
 - You can retrieve the default values for the settings from the project.settings file in the test runner
 - cypress.config.js is where you make the changes to control Cypress capabilities
 - you can define the environment variables here
+- you can specify the retries count if your application is unstable (provides more opportunities to pass the test)
 
 npx
 -  The npx command allows developers to execute any Javascript Package available on the NPM registry without even installing it
@@ -145,3 +146,17 @@ npx
 cypress cloud
 - displays execution results on cloud with failure videos, logs, screenshots etc
 - free access for 1-2 users. License cost implications for more than 2 people
+- Displays info about failure frequency and the test execution times, and slow tests etc
+
+CI integration for cypress and jenkins
+- npm run test -- --browser chrome --parallel (Jenkins will search for multiple slaves which are available to run the tests in parallel)
+- --no exit (this flag will keep the test runner open even after execution)
+- --record (enables video recording)
+- --reporter, -r (enables the Mocha reporter)
+- --spec (provides control over which test cases to execute)
+- Select option your project is parameterized in Jenkins displays Choice Parameter Section
+  On a separate line add each package.json scripts: {testfmwk, run command 2} e.g. "testfmwk": "cypress run --spec cypress/integration/examples/fmwk/*.js",
+- Select add build step -> Execute Shell command
+  npm run "$Script"
+  This will interlink Jenkins with the package.json scripts: {block} code with the associated commands under each key
+  To trigger the run mode select the drop-down menu in
