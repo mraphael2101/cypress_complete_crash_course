@@ -5,6 +5,8 @@ describe('First test suite', function () {
     it('Test demonstrating a Standard Chai Assertion', function () {
         // Test steps go here
         expect(true).to.equal(true)
+        const str = 'abc'
+        expect(str.includes('abc')).to.be.true
     })
 
     it('Test to manipulate locators incl Traversing through ele arrays', function () {

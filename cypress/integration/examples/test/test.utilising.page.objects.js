@@ -14,6 +14,9 @@ describe("Test Suite demonstrating Page Objects concept", function () {
 
         const productPage = new ProductPage()
         productPage.getCheckoutButton().click()
+
+        // Overrides the default timeout at a test case level
+        Cypress.config('defaultCommandTimeout', 8000)
     })
 
 })
