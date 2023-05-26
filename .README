@@ -160,3 +160,24 @@ CI integration for cypress and jenkins
   npm run "$Script"
   This will interlink Jenkins with the package.json scripts: {block} code with the associated commands under each key
   To trigger the run mode select the drop-down menu in
+
+Cucumber integration
+- 1. To install type -> npm install @badeball/cypress-cucumber-preprocessor
+- 2. Update the cypress.config.js file to register that the package/plugin were installed before running the tests
+    const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
+    const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
+
+    async function setupNodeEvents(on, config) {
+    // implement node event listeners here which are loaded before every test run
+    await preprocessor.addCucumberPreprocessorPlugin(on, config)
+    on("file:preprocessor", browserify.default(config))
+    return config // return this object just in case it is modified by the plugin
+    }
+- 3. Call the function from cypress.config.js by referencing it in the e2e object as follows:
+     Also update the specPattern value to detect the files
+  e2e: {
+    setupNodeEvents,
+    specPattern: 'cypress/integration/examples/BDD/*.feature'
+  },
+- 4. Add the below dependency to your framework
+    "@cypress/browserify-preprocessor": "latest",
