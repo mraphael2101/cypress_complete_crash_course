@@ -3,4 +3,7 @@
   <component name="me.mbolotov.cypress.base.settings.CypressSettings">
     <option name="lastDonatBalloon" value="1684340650153" />
   </component>
+  <component name="me.mbolotov.cypress.settings.CypressSettings">
+    <option name="evalConfig" value="false" />
+  </component>
 </project>

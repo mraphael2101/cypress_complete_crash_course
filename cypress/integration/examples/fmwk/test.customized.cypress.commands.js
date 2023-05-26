@@ -13,3 +13,4 @@ describe("Cypress Custom Commands Test Suite", function () {
     })
 
 })
+

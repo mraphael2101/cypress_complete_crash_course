@@ -25,7 +25,8 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
-Cypress.Commands.add('selectProduct', (productName) => {
+//'div.card.h-100 > div > h4 > a'
+Cypress.Commands.add("selectProduct", (productName) => {
     cy.get('h4.card-title')
         .each(($el, index, $list) => {
             if($el.text().includes(productName)) {
@@ -35,4 +36,3 @@ Cypress.Commands.add('selectProduct', (productName) => {
             }
         })
 })
-

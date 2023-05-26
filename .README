@@ -128,3 +128,8 @@ Traversing through elements
 
 Cypress Hooks
 - The in-built capability comes from Mocha
+
+Cypress Debugging
+- Placing cy.pause() in the code will pause execution at that point in the Cypress test runner
+  This will allow you to explore the state of the elements on the screen.
+  You can then click Resume button in the test runner to finish off execution.

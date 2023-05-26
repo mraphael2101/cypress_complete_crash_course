@@ -1,18 +1,29 @@
-describe("Parameterised Test Data from Json files using each command Test Suite", function () {
+/// <reference types="cypress" />
+
+describe("Traverse Parameterised Test Data from Json file Suite", function () {
 
     before(function () {
         // runs once before all tests in the block
 
-        //
-        cy.fixture('example').then(function (data) {
+        cy.fixture('example2').then(function (data2) {
             // Assign value to a class scope variable so that it is accessible outside the method
-            this.data = data
+            this.data2 = data2
         })
     })
 
-    it("Parameterised Test Data from Json files using each command Test", function () {
+    it("Traverse through Parameterised Test Data from Json", function () {
         cy.visit("https://rahulshettyacademy.com/angularpractice/")
+
+        // cy.pause()
+        cy.debug()
+
+        this.data2.productName.forEach(function (element) {
+            cy.selectProduct(element)
+        })
 
     })
 
 })
+
+
+
