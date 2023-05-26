@@ -4,7 +4,7 @@ describe("Manipulating Alert Popups", function () {
         cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
 
         // Cypress implicitly dismisses the popup after it appears (a standard functionality)
-        cy.get('#alertbtn').click()
+        cy.get("#alertbtn").click()
         cy.get("[value='Confirm']").click()
 
         // Returns a string which is assigned to the str variable
