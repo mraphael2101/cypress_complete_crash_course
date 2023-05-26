@@ -141,3 +141,7 @@ cypress/config.js
 
 npx
 -  The npx command allows developers to execute any Javascript Package available on the NPM registry without even installing it
+
+cypress cloud
+- displays execution results on cloud with failure videos, logs, screenshots etc
+- free access for 1-2 users. License cost implications for more than 2 people

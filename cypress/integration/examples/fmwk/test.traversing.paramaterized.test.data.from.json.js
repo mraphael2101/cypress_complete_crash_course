@@ -15,7 +15,9 @@ describe("Traverse Parameterised Test Data from Json file Suite", function () {
         cy.visit("https://rahulshettyacademy.com/angularpractice/")
 
         // cy.pause()
-        cy.debug()
+        // cy.debug()
+
+        cy.get("body > app-root > app-navbar > div > nav > ul > li:nth-child(2) > a").click()
 
         this.data2.productName.forEach(function (element) {
             cy.selectProduct(element)
