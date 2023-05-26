@@ -135,6 +135,9 @@ Cypress Debugging
   You can then click Resume button in the test runner to finish off execution.
 
 cypress/config.js
-- You can retreive the default values for the settings from the project.settings file in the test runner
+- You can retrieve the default values for the settings from the project.settings file in the test runner
 - cypress.config.js is where you make the changes to control Cypress capabilities
 - you can define the environment variables here
+
+npx
+-  The npx command allows developers to execute any Javascript Package available on the NPM registry without even installing it
