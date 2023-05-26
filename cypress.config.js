@@ -3,7 +3,12 @@ const { defineConfig } = require("cypress");
 // defaultCommandTimeout: 5000, -> Overrides the default automation wait time globally
 
 module.exports = defineConfig({
+
   defaultCommandTimeout: 5000,
+
+  env: {
+    url: "https://rahulshettyacademy.com"
+  },
 
   e2e: {
     setupNodeEvents(on, config) {

@@ -134,5 +134,7 @@ Cypress Debugging
   This will allow you to explore the state of the elements on the screen.
   You can then click Resume button in the test runner to finish off execution.
 
-Cypress Config.js
+cypress/config.js
+- You can retreive the default values for the settings from the project.settings file in the test runner
 - cypress.config.js is where you make the changes to control Cypress capabilities
+- you can define the environment variables here
