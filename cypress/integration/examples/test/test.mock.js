@@ -31,6 +31,7 @@ describe("Mocking APIs Sample Test Suite", function () {
         // Test Step 2
         cy.get("button[class='btn btn-primary']").click()
         cy.wait('@bookretrievals')
+        cy.get('p').should('have.text', 'Oops only 1 Book available')
     })
 
 })
