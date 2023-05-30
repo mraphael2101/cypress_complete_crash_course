@@ -181,3 +181,18 @@ Cucumber integration
   },
 - 4. Add the below dependency to your framework
     "@cypress/browserify-preprocessor": "latest",
+
+- 5. To enable reporting for cucumber, update the package.json with the below object
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumberReports/results.json"
+    },
+- 6. In addition to step 5, download and install the cucumber-json-formatter plugin
+     to convert the results into a json object format - necessary for the reporter
+     https://github.com/cucumber/json-formatter
+     For Mac download cucumber-json-formatter-darwin-amd64
+     Rename to cucumber-json-formatter
+     Paste the file in the root folder of the project in your IDE
+     After running the BDD automation, results.json should be generated in cypress/cucumberReports
+     Run the command which will add the dependency and update the package.json file
+     npm install multiple-cucumber-html-reporter --save-dev

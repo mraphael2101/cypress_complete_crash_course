@@ -23,9 +23,21 @@ module.exports = defineConfig({
 
   e2e: {
     setupNodeEvents,
-    specPattern: 'cypress/integration/examples/*/*.js',
+    // Runs the unit tests
+    // specPattern: 'cypress/integration/examples/*/*.js',
+    // Runs the bdd tests
+    specPattern: 'cypress/integration/examples/bdd/*.feature',
+
+    "cypress-cucumber-preprocessor": {
+      "nonGlobalStepDefinitions": true,
+      "stepDefinitions": "cypress/integration/examples/bdd/*.js"
+    },
+
+    "commonPath": "cypress/integration/examples/bdd/",
+
     screenshotsFolder: 'cypress/failures/screenshots',
   },
+
 });
 
 // defaultCommandTimeout: 5000, -> Overrides the default automation wait time globally
