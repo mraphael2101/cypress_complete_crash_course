@@ -1,5 +1,5 @@
-import HomePage from "../pageObjects/HomePage";
-import ProductPage from "../pageObjects/ProductPage";
+import HomePage from "../../../pages/HomePage";
+import ProductPage from "../../../pages/ProductPage";
 
 describe("Test Suite demonstrating Page Objects concept", function () {
 

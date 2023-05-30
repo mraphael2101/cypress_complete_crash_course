@@ -1,10 +1,10 @@
+/// <reference types="Cypress" />
+import HomePage from "../../../pages/HomePage";
 import { Given,When,Then } from "@badeball/cypress-cucumber-preprocessor";
-import HomePage from "../pageObjects/HomePage";
-import ProductPage from "../pageObjects/ProductPage";
-const homePage = new HomePage()
-const productPage = new ProductPage()
 
-// Anonymous function syntax with ()=> is more readable than function()
+const homePage = new HomePage()
+
+// Anonymous function syntax with ()=> is more readable than function() cant be used with beforeEach().js
 Given('I open the Ecommerce Page', function () {
 
     // implicitly made available from the beforeEach.js file
