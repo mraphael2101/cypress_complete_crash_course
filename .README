@@ -199,3 +199,11 @@ Cucumber integration
      Create an empty file named cucumber-html-report.js and paste it in the root directory
      Update the contents of the file from https://www.npmjs.com/package/multiple-cucumber-html-reporter
      Run the command node cucumber-html-report.js
+
+Using Cypress for API back-end testing/mocking
+Note that the following functionality is not available via Selenium
+- 1a. The Cypress intercept method can be used to modify real HTTP responses, changing the body, headers, or HTTP status
+      code responses before they are received by the browser
+- 1b. The Cypress intercept method can be used to modify a HTTP request's body, headers, and URL before it is sent to
+      the destination server
+- 1c. This helps us to perform Integration testing between UI and Back-end Services
