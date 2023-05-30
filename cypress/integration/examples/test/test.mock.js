@@ -6,6 +6,9 @@ describe("Mocking APIs Sample Test Suite", function () {
 
     it("Test to mock an API", function () {
 
+        // Test Step 1
+        cy.visit("https://rahulshettyacademy.com/angularAppdemo/")
+
         // Request object:
         // Cypress will listen for this call to be made on the browser and intercept it
         cy.intercept({
@@ -26,6 +29,9 @@ describe("Mocking APIs Sample Test Suite", function () {
                 }
             ]
         })
+
+        // Test Step 2
+        cy.get("button[class='btn btn-primary']").click()
 
     })
 
