@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "cypress-iframe": "^1.0.1",
-    "multiple-cucumber-html-reporter": "^3.4.0",
-    "@cucumber/cucumber": "^9.0.0"
+    "multiple-cucumber-html-reporter": "^3.4.0"
   }
 }

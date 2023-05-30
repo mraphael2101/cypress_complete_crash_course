@@ -2,8 +2,6 @@
 
 describe("Mocking APIs Sample Test Suite", function () {
 
-    // TODO tbu
-
     it("Test to mock an API", function () {
 
         // Test Step 1
@@ -28,11 +26,11 @@ describe("Mocking APIs Sample Test Suite", function () {
                     "aisle": "2301"
                 }
             ]
-        })
+        }).as('bookretrievals')
 
         // Test Step 2
         cy.get("button[class='btn btn-primary']").click()
-
+        cy.wait('@bookretrievals')
     })
 
 })
