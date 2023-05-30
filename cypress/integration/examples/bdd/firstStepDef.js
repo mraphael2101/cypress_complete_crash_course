@@ -5,7 +5,10 @@ const homePage = new HomePage()
 const productPage = new ProductPage()
 
 // Anonymous function syntax with ()=> is more readable than function()
-Given('I open the Ecommerce Page', ()=> {
+Given('I open the Ecommerce Page', function () {
+
+    // implicitly made available from the beforeEach.js file
+    //data2.name
     cy.visit(Cypress.env('url') + "/angularpractice/")
 })
 

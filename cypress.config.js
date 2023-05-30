@@ -28,13 +28,6 @@ module.exports = defineConfig({
     // Runs the bdd tests
     specPattern: 'cypress/integration/examples/bdd/*.feature',
 
-    "cypress-cucumber-preprocessor": {
-      "nonGlobalStepDefinitions": true,
-      "stepDefinitions": "cypress/integration/examples/bdd/*.js"
-    },
-
-    "commonPath": "cypress/integration/examples/bdd/",
-
     screenshotsFolder: 'cypress/failures/screenshots',
   },
 

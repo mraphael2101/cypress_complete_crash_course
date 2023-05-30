@@ -196,3 +196,6 @@ Cucumber integration
      After running the BDD automation, results.json should be generated in cypress/cucumberReports
      Run the command which will add the dependency and update the package.json file
      npm install multiple-cucumber-html-reporter --save-dev
+     Create an empty file named cucumber-html-report.js and paste it in the root directory
+     Update the contents of the file from https://www.npmjs.com/package/multiple-cucumber-html-reporter
+     Run the command node cucumber-html-report.js
