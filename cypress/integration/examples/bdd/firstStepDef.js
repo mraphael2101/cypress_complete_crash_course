@@ -6,7 +6,6 @@ const homePage = new HomePage()
 
 // Anonymous function syntax with ()=> is more readable than function() cant be used with beforeEach().js
 Given('I open the Ecommerce Page', function () {
-
     // implicitly made available from the beforeEach.js file
     //data2.name
     cy.visit(Cypress.env('url') + "/angularpractice/")

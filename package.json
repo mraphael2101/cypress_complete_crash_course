@@ -7,6 +7,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:spec": "cypress run --spec",
+    "test 1": "cypress run --spec cypress/integration/examples/test/test.alerts.js",
     "test fmwk": "cypress run --spec cypress/integration/examples/fmwk/*.js",
     "test samples": "cypress run --spec cypress/integration/examples/test/*.js",
     "test samples headed chrome": "cypress run --spec cypress/integration/examples/test/*.js --headed --browser chrome",
@@ -24,9 +25,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^17.2.0",
+    "@badeball/cypress-cucumber-preprocessor": "^17.2.1",
     "@cypress/browserify-preprocessor": "latest",
-    "cypress": "^12.12.0"
+    "cypress": "^12.13.0"
   },
   "devDependencies": {
     "cypress-iframe": "^1.0.1",

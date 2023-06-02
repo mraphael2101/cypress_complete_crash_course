@@ -24,10 +24,12 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     // Runs the unit tests
-    specPattern: 'cypress/integration/examples/*/*.js',
+    // specPattern: 'cypress/integration/examples/*/*.js',
     // Runs the bdd tests
-    // specPattern: 'cypress/integration/examples/bdd/*.feature',
 
+    // specPattern: ['cypress/integration/examples/*/*.js', 'cypress/integration/examples/bdd/*.feature'],
+
+    specPattern: ['cypress/integration/examples/*/*.js', 'cypress/integration/examples/bdd/*.feature'],
     // stepDefinitions: [
     //   "cypress/integration/examples/bdd/*.{js}"
     // ],
