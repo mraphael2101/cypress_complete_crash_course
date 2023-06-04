@@ -24,6 +24,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     specPattern: ['cypress/integration/examples/*/*.js', 'cypress/integration/examples/bdd/*.feature'],
+    stepDefinitions: ['cypress/support/step_definitions/*.js'],
     screenshotsFolder: 'cypress/failures/screenshots',
   },
 
