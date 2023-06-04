@@ -1,4 +1,3 @@
-/// <reference types="Cypress" />
 import HomePage from "../../pages/HomePage";
 import { Given,When,Then } from "@badeball/cypress-cucumber-preprocessor";
 
@@ -10,7 +9,8 @@ Given('I open the Ecommerce Page', function () {
 })
 
 When('I add items to my Cart', function () {
-    homePage.getEditBox().click()
+    // cy.log("From fixtures -> " + this.data2.name)
+    // homePage.getEditBox().click()
 })
 
 When('I fill in the form details', function (dataTable) {
@@ -18,6 +18,9 @@ When('I fill in the form details', function (dataTable) {
     cy.log(dataTable.rawTable[1][0])
     cy.log(dataTable.rawTable[1][1])
 })
-Then(/^I should see a flash message saying (.*) (.*)$/, function (username) {
+Then(/^I should see a flash message saying (.*) (.*)$/, function (username, password) {
     cy.log(username)
+    if(username === 'ts01') {
+        cy.log(password)
+    }
 });
