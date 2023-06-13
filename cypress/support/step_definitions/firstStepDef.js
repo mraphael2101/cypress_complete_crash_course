@@ -24,3 +24,15 @@ Then(/^I should see a flash message saying (.*) (.*)$/, function (username, pass
         cy.log(password)
     }
 });
+
+// new cucumber specification for static parameter
+Given("a POST Request is submitted to Service for a {string} typeA", function (typeA) {
+    cy.log(typeA)
+    cy.pause()
+});
+
+// Old cucumber specification for static parameter
+// Given(/^A POST Request is submitted to Service for a "([^"]*)" typeA$/, function (typeA) {
+//     cy.log(typeA)
+//     cy.pause()
+// });

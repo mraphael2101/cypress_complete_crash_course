@@ -2,6 +2,7 @@ Feature: End to end Ecommerce validation
 
   @Regression
   Scenario: Ecommerce products delivery
+    Given a POST Request is submitted to Service for a 'ABC' typeA
     Given I open the Ecommerce Page
     When I add items to my Cart
     And I fill in the form details
