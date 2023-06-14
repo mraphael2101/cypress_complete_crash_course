@@ -28,12 +28,16 @@ describe("Mocking APIs Sample Test Suite", function () {
                             "aisle": "2301"
                         }
                     ]
-        }).as('bookretrievals')
+            }).as('bookretrievals').should(({request, response}) => {
+                // Validate if mocked response has one row/record plus the header
+            // cy.get('tr').should('have.length', response.body.length + 1)
+            })
 
         // Test Step 2
         cy.get("button[class='btn btn-primary']").click()
         cy.wait('@bookretrievals')
         cy.get('p').should('have.text', 'Oops only 1 Book available')
+
     })
 
 })
