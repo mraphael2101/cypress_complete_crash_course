@@ -1,8 +1,6 @@
-/// <reference types="Cypress" />
-
 describe("Mocking APIs Sample Test Suite", function () {
 
-    it("Test to mock an API", function () {
+    it("Test to mock a HTTP API response", function () {
 
         // Test Step 1
         cy.visit("https://rahulshettyacademy.com/angularAppdemo/")
