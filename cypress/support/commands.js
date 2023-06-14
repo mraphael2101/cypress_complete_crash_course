@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
-//'div.card.h-100 > div > h4 > a'
+// This is a common function that can be reused across tests
 Cypress.Commands.add("selectProduct", (productName) => {
     cy.get('h4.card-title')
         .each(($el, index, $list) => {
@@ -35,4 +35,23 @@ Cypress.Commands.add("selectProduct", (productName) => {
                     .click()
             }
         })
+})
+
+// How to make the Login API call extract the response token
+Cypress.Commands.add("LoginAPI", () => {
+
+    cy.request(
+        "POST",
+        "https://rahulshettyacademy.com/api/ecom/auth/login",
+        {
+            "userEmail":"rahulshetty@gmail.com",
+            "userPassword":"Iamking@00"
+        }
+    ).then(function (response) {
+        expect(response.status).to.eq(200)
+
+        // Make the variable global by using the Cypress environment variable value
+        Cypress.env('token', response.body.token)
+    })
+
 })

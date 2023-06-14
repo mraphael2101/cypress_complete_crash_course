@@ -207,3 +207,7 @@ Note that the following functionality is not available via Selenium
 - 1b. The Cypress intercept method can be used to modify a HTTP request's body, headers, and URL before it is sent to
       the destination server
 - 1c. This helps us to perform Integration testing between UI and Back-end Services
+- XMLHttpRequest is a standard javascript object that allows you to make HTTP Requests from the browser in javascript.
+  HttpRequest is a server side object that represents a request to the server. In summary - one works in the browser,
+  the other in the web server
+- XHR methods transfer data between the Web Browser and the Web Server
