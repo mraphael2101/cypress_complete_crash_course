@@ -14,7 +14,7 @@ describe("Mocking APIs Sample Test Suite", function () {
                 "author": "John foe"
             }
         ).then(function (response) {
-            expect(response.body).to.have.property("Msg", "Successfully added")
+            expect(response.body).to.have.property("Msg", "successfully added")
             expect(response.status).to.eq(200)
         })
 
