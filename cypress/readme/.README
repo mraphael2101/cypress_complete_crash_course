@@ -213,4 +213,5 @@ Note that the following functionality is not available via Selenium
 - XHR methods transfer data between the Web Browser and the Web Server
 - It is possible to extract the response token from the api response. This can be achieved by creating a Cypress command
   in the command.js file. A function is associated to the command which has a request with body, which once submitted
-  receives a response containing the response token
+  receives a response containing the response token. The token can be stored in a Cypress environment variable so that
+  it can be accessed from anywhere inside the framework

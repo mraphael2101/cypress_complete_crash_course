@@ -48,10 +48,10 @@ Cypress.Commands.add("LoginAPI", () => {
             "userPassword":"Iamking@00"
         }
     ).then(function (response) {
-        expect(response.status).to.eq(200)
+        expect(response.status).to.eq(200);
 
         // Make the variable global by using the Cypress environment variable value
-        Cypress.env('token', response.body.token)
+        Cypress.env('token', response.body.token);
     })
 
 })
