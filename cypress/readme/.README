@@ -89,6 +89,7 @@ Selectors
   tagname[attribute=value]
   tagname1 tagname2 (equivalent to xpath tagname1/tagname2)
 - instead of / give space for CSS
+- .card-body button:last-of-type (handy function to use)
 
 Cypress JS (Synchronous managed by Cypress to run Asynchronously)
 - Cypress is asynchronous in nature and there is not guarantee in the sequence of execution, but
