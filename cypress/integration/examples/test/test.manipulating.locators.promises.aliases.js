@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 describe('First test suite', function () {
 
     it('Test demonstrating a Standard Chai Assertion', function () {
