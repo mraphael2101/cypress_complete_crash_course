@@ -12,7 +12,7 @@
     "test samples": "cypress run --spec cypress/integration/examples/test/*.js",
     "test samples headed chrome": "cypress run --spec cypress/integration/examples/test/*.js --headed --browser chrome",
     "test cli with arg": "npx cypress run --spec cypress/integration/examples/test/test.to.retrieve.environmental.property.js --env url=https://www.google.com --headed --browser chrome",
-    "headed bdd test": "npx cypress run --spec cypress/integration/examples/bdd/first.feature  --headed --browser chrome",
+    "headed bdd test": "npx cypress run --spec cypress/integration/examples/bdd/dtmanipulation.feature  --headed --browser chrome",
     "headless bdd test": "npx cypress run --spec cypress/integration/examples/bdd/first.feature --browser chrome",
     "all bdd tests": "npx cypress run --spec cypress/integration/examples/bdd/*.feature  --headed --browser chrome",
     "all bdd tests with tag": "npx cypress run --env tags=@Regression --headed --browser chrome"

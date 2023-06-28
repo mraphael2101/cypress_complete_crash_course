@@ -36,3 +36,14 @@ Given("a POST Request is submitted to Service for a {string} typeA", function (t
 //     cy.log(typeA)
 //     cy.pause()
 // });
+
+Given('I fill in the form details diff',  (datatable)=> {
+    var dtInput = datatable.hashes()
+    for(let i = 0; i < datatable.length; i++) {
+        let name = dtInput[i].name;
+        let gender = dtInput[i].gender;
+        cy.log(name)
+        cy.log(gender)
+    }
+    cy.pause()
+});
