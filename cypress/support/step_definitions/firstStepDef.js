@@ -45,5 +45,23 @@ Given('I fill in the form details diff',  (datatable)=> {
         cy.log(name)
         cy.log(gender)
     }
-    cy.pause()
+});
+Given(/^I demonstrate passing vals between promises$/, function () {
+
+});
+
+var temp;
+
+Given("I demonstrate passing vals after promise is resolved {string}",  (attrVal)=> {
+    cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/")
+        .then(function ()
+        {
+            temp = attrVal
+            cy.log("internal print " + temp)
+        })
+        .then(function ()
+        {
+            cy.log("promise resolved then print " + temp)
+            cy.pause()
+        })
 });
