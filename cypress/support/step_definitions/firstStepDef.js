@@ -3,6 +3,30 @@ import { Given,When,Then } from "@badeball/cypress-cucumber-preprocessor";
 
 const homePage = new HomePage()
 
+// From Cucumber
+// Before({tags: '@cukehook'}, ()=> {
+// })
+//
+// After({tags: '@cukehook'}, ()=> {
+// })
+
+// Mocha hooks
+before(async function () {
+    // Runs once before all tests in the block
+    cy.log("before() -> Runs once before all tests in the block")
+})
+
+after(async function () {
+    // Runs once after all tests in the block
+    cy.log("after() -> Runs once after all tests in the block")
+    cy.pause()
+})
+
+beforeEach(async function () {
+    // Runs before each test in the block
+    cy.log("beforeEach() -> Runs before each test in the block")
+})
+
 // Anonymous function syntax with ()=> is more readable than function() cant be used with beforeEach().js
 Given('I open the Ecommerce Page', function () {
     cy.visit(Cypress.env('url') + "/angularpractice/")
@@ -28,7 +52,6 @@ Then(/^I should see a flash message saying (.*) (.*)$/, function (username, pass
 // new cucumber specification for static parameter
 Given("a POST Request is submitted to Service for a {string} typeA", function (typeA) {
     cy.log(typeA)
-    cy.pause()
 });
 
 // Old cucumber specification for static parameter
@@ -62,6 +85,5 @@ Given("I demonstrate passing vals after promise is resolved {string}",  (attrVal
         .then(function ()
         {
             cy.log("promise resolved then print " + temp)
-            cy.pause()
         })
 });
