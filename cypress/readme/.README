@@ -157,6 +157,8 @@ CI integration for cypress and jenkins
 - --spec (provides control over which test cases to execute)
 - Select option your project is parameterized in Jenkins displays Choice Parameter Section
   On a separate line add each package.json scripts: {testfmwk, run command 2} e.g. "testfmwk": "cypress run --spec cypress/integration/examples/fmwk/*.js",
+  Appending the argument  --no-exit will keep the session open and will stop it from closing
+
 - Select add build step -> Execute Shell command
   npm run "$Script"
   This will interlink Jenkins with the package.json scripts: {block} code with the associated commands under each key
