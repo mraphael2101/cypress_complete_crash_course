@@ -38,7 +38,9 @@ When('I add items to my Cart', function () {
 
 When('I fill in the form details', function (dataTable) {
     dataTable.hashes().forEach((row) => {
-        cy.log(`${row.name} ${row.gender}`);
+        if(row.name !== "name") {
+            cy.log(`${row.name} ${row.gender}`);
+        }
     });
 })
 
