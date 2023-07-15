@@ -19,7 +19,6 @@ before(async function () {
 after(async function () {
     // Runs once after all tests in the block
     cy.log("after() -> Runs once after all tests in the block")
-    cy.pause()
 })
 
 beforeEach(async function () {
@@ -38,20 +37,21 @@ When('I add items to my Cart', function () {
 })
 
 When('I fill in the form details', function (dataTable) {
-    // 2D Array [1][0]  == 2nd row, 1st column
-    cy.log(dataTable.rawTable[1][0])
-    cy.log(dataTable.rawTable[1][1])
+    dataTable.hashes().forEach((row) => {
+        cy.log(`${row.name} ${row.gender}`);
+    });
 })
+
 Then(/^I should see a flash message saying (.*) (.*)$/, function (username, password) {
     cy.log(username)
     if(username === 'ts01') {
-        cy.log(password)
+        cy.log(password);
     }
 });
 
 // new cucumber specification for static parameter
-Given("a POST Request is submitted to Service for a {string} typeA", function (typeA) {
-    cy.log(typeA)
+Given("a POST Request is submitted to Service for a {string}", function (typeA) {
+    cy.log(typeA);
 });
 
 // Old cucumber specification for static parameter
@@ -60,18 +60,6 @@ Given("a POST Request is submitted to Service for a {string} typeA", function (t
 //     cy.pause()
 // });
 
-Given('I fill in the form details diff',  (datatable)=> {
-    var dtInput = datatable.hashes()
-    for(let i = 0; i < datatable.length; i++) {
-        let name = dtInput[i].name;
-        let gender = dtInput[i].gender;
-        cy.log(name)
-        cy.log(gender)
-    }
-});
-Given(/^I demonstrate passing vals between promises$/, function () {
-
-});
 
 var temp;
 
