@@ -17,6 +17,6 @@ Feature: End to end Ecommerce validation
     Then I should see a flash message saying <username> <password>
 
     Examples:
-    |username|password    |
-    |abc01   |Erik Larson |
-    |ts01    |Taylor Swift|
+      | username | password     |
+      | abc01    | Erik Larson  |
+      | ts01     | Taylor Swift |
