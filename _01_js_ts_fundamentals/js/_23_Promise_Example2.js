@@ -2,7 +2,7 @@ async function main() {
     // Define an asynchronous function that returns a promise
     async function getUsers() {
         // Make an HTTP request to get a list of users
-        const response = await fetch("https://api.example.com/users");
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
         // Check if the response was successful
         if (response.ok) {
@@ -26,8 +26,8 @@ async function main() {
     // Get the result of the promise
     const users = await promise;
 
-    // Do something with the list of users
-    // ...
+    getUsers().then(data => console.log(data));
+
 }
 
 // Call the main() function
