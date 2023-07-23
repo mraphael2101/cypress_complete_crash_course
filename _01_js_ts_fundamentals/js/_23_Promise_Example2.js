@@ -1,10 +1,9 @@
 async function main() {
+
     // Define an asynchronous function that returns a promise
     async function getUsers() {
-        // Make an HTTP request to get a list of users
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-        // Check if the response was successful
         if (response.ok) {
             // Parse the response data
             const users = await response.json();
@@ -31,4 +30,4 @@ async function main() {
 }
 
 // Call the main() function
-main();
+main()
