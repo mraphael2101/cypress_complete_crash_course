@@ -56,13 +56,6 @@ Given("a POST Request is submitted to Service for a {string}", function (typeA) 
     cy.log(typeA);
 });
 
-// Old cucumber specification for static parameter
-// Given(/^A POST Request is submitted to Service for a "([^"]*)" typeA$/, function (typeA) {
-//     cy.log(typeA)
-//     cy.pause()
-// });
-
-
 var temp;
 
 Given("I demonstrate passing vals after promise is resolved {string}",  (attrVal)=> {
