@@ -26,6 +26,3 @@ describe("Traverse Parameterised Test Data from Json file Suite", function () {
     })
 
 })
-
-
-

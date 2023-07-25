@@ -6,4 +6,7 @@
   <component name="me.mbolotov.cypress.settings.CypressSettings">
     <option name="evalConfig" value="false" />
   </component>
+  <component name="me.mbolotov.cypress.settings.CypressSettings">
+    <option name="evalConfig" value="false" />
+  </component>
 </project>
