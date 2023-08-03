@@ -15,6 +15,7 @@
     "headed bdd test": "npx cypress run --spec cypress/integration/examples/bdd/first.feature  --headed --browser chrome",
     "headless bdd test": "npx cypress run --spec cypress/integration/examples/bdd/first.feature --browser chrome",
     "all bdd tests": "npx cypress run --spec cypress/integration/examples/bdd/*.feature  --headed --browser chrome",
+    "all bdd test headed": "npx cypress run -e TAGS='regression' --headed --browser chrome",
     "all bdd tests with tag": "npx cypress run --env tags=@Regression --headed --browser chrome"
   },
   "cypress-cucumber-preprocessor": {
