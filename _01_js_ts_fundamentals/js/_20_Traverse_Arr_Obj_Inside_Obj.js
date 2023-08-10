@@ -47,4 +47,6 @@ for (var i in obj)
 
     alert(source_team+" : "+real_name);
 
+    JSON.stringify(obj);
+
 }

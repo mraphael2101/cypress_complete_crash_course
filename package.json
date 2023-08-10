@@ -27,11 +27,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.370.0",
+    "@aws-sdk/lib-dynamodb": "3.370.0",
     "@badeball/cypress-cucumber-preprocessor": "^17.2.1",
     "@cypress/browserify-preprocessor": "latest",
-    "cypress": "^12.13.0",
-    "@aws-sdk/client-dynamodb": "^3.370.0",
-    "@aws-sdk/lib-dynamodb": "3.370.0"
+    "cypress": "^12.17.3"
   },
   "devDependencies": {
     "cypress-iframe": "^1.0.1",
