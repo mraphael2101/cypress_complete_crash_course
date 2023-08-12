@@ -7,7 +7,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:spec": "cypress run --spec",
-    "unit test": "cypress run --spec cypress/integration/examples/test/test.alerts.js",
+    "unit test": "cypress run --spec cypress/integration/examples/test/test.cy.readwrite.file.js",
     "test fmwk": "cypress run --spec cypress/integration/examples/fmwk/*.js",
     "test samples": "cypress run --spec cypress/integration/examples/test/*.js",
     "test samples headed chrome": "cypress run --spec cypress/integration/examples/test/*.js --headed --browser chrome",
