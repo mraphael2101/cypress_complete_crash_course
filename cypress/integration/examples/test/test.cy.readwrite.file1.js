@@ -2,7 +2,8 @@
  * Only use JSON.parse on the result if it's an object, or it will cause an error.
  * If you pass an encoding argument of ‘utf8’ to cy.readFile, it will return a parsed JSON object */
 
-const dir = '/Users/markraphael/Documents/workspace_javascript/cypress_bdd/cypress_complete_crash_course/cypress/fixtures/rewr';
+// const dir = '/Users/markraphael/Documents/workspace_javascript/cypress_bdd/cypress_complete_crash_course/cypress/fixtures/rewr';
+const dir = '/Users/mark.raphael/Documents/javascript_workspace/cypress_complete_crash_course/cypress/fixtures/rewr';
 
 function readJsonFile(filePath) {
     return cy.readFile(filePath, 'utf8').then((json) => {
