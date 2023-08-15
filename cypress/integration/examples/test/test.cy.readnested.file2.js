@@ -16,7 +16,7 @@ function readJsonFiles(filePath1, filePath2) {
     };
 }
 
-it('read and write out either a JSON object or the file contents as a string', () => {
+it('read and write out either a JSON object or the file contents as an object', () => {
     const results = readJsonFiles(dir + '/archived.json', dir + '/derived.json');
 
     cy.log('The promise has resolved');
