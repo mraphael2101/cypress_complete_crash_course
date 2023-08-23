@@ -25,7 +25,6 @@ var myArr = [
     }
 ]
 
-
 for (let i = 0; i < myArr.length; i++) {
     // Level 1
     console.log(myArr[i].planId);
