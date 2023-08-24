@@ -1,11 +1,14 @@
-var myArr = [
+var attendeesParties = [
     {
         "planId": "somevalue1",
         "parties": [
             {
                 "attendees": [
                     {
-                        "name": "anothervalue1",
+                        "name": "name1",
+                    },
+                    {
+                        "name": "name2",
                     }
                 ]
             },
@@ -17,13 +20,33 @@ var myArr = [
             {
                 "attendees": [
                     {
-                        "name": "anothervalue2",
+                        "name": "name3",
+                    },
+                    {
+                        "name": "name4",
                     }
                 ]
             },
         ]
     }
 ]
+
+const attParties = [];
+for (let i = 0; i < attendeesParties.length; i++) {
+
+    const data = {
+        planId: attendeesParties[i].planId,
+        names: []
+    };
+
+    for (let j = 0; j < attendeesParties[i].parties[0].attendees.length; j++) {
+        data.names.push(attendeesParties[i].parties[0].attendees[j].name);
+    }
+
+    attParties.push(data);
+}
+
+console.log(attParties)
 
 // for (let i = 0; i < myArr.length; i++) {
 //     // Level 1
@@ -38,17 +61,17 @@ var myArr = [
 //     }
 // }
 
-const planDetails = {};
-
-for (let i = 0; i < myArr.length; i++) {
-    const data = {
-        planId: myArr[i].planId,
-        name: myArr[i].parties[0].attendees[0].name
-    };
-
-    planDetails.planId = data.planId
-    planDetails.name = data.name
-    console.log(planDetails)
-}
+// const planDetails = {};
+//
+// for (let i = 0; i < myArr.length; i++) {
+//     const data = {
+//         planId: myArr[i].planId,
+//         name: myArr[i].parties[0].attendees[0].name
+//     };
+//
+//     planDetails.planId = data.planId
+//     planDetails.name = data.name
+//     console.log(planDetails)
+// }
 
 
