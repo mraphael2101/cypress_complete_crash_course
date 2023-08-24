@@ -1,31 +1,62 @@
-var body: {
-    "attendeeParties": [
-        {
-            "planId": "somevalue1",
-            "parties": [
-                {
-                    "attendees": [
-                        {
-                            "name": "anothervalue1",
-                        }
-                    ]
-                },
-            ]
-        },
-        {
-            "planId": "somevalue2",
-            "parties": [
-                {
-                    "attendees": [
-                        {
-                            "name": "anothervalue2",
-                        }
-                    ]
-                },
-            ]
-        }
-    ]
-}
+// var body: {
+//     "attendeeParties": [
+//         {
+//             "planId": "somevalue1",
+//             "parties": [
+//                 {
+//                     "attendees": [
+//                         {
+//                             "name": "anothervalue1",
+//                         }
+//                     ]
+//                 },
+//             ]
+//         },
+//         {
+//             "planId": "somevalue2",
+//             "parties": [
+//                 {
+//                     "attendees": [
+//                         {
+//                             "name": "anothervalue2",
+//                         }
+//                     ]
+//                 },
+//             ]
+//         }
+//     ]
+// }
+
+
+var attendeeParties =
+[
+    {
+        "planId": "somevalue1",
+        "parties": [
+            {
+                "attendees": [
+                    {
+                        "name": "anothervalue1",
+                    }
+                ]
+            },
+        ]
+    },
+    {
+        "planId": "somevalue2",
+        "parties": [
+            {
+                "attendees": [
+                    {
+                        "name": "anothervalue2",
+                    }
+                ]
+            },
+        ]
+    }
+]
+
+
 
 const planDetails = {};
 
