@@ -1,4 +1,4 @@
-var body: {
+var body = {
     "attendeeParties": [
         {
             "planId": "somevalue1",
@@ -29,10 +29,10 @@ var body: {
 
 const planDetails = {};
 
-for (let i = 0; i < myArr.length; i++) {
+for (let i = 0; i < body.attendeeParties.length; i++) {
     const data = {
-        planId: myArr[i].planId,
-        name: myArr[i].parties[0].attendees[0].name
+        planId: body.attendeeParties[i].planId,
+        name: body.attendeeParties[i].parties[0].attendees[0].name
     };
 
     planDetails.planId = data.planId
