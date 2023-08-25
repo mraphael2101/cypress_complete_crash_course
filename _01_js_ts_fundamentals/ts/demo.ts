@@ -1,4 +1,4 @@
-function getPlanDetails(attendeeParties: Array<{
+function getPlanDetails1(attendeeParties: Array<{
     planId: string;
     parties: Array<{
         attendees: Array<{
@@ -49,4 +49,4 @@ const attendeeParties = [
     },
 ];
 
-console.log(getPlanDetails(attendeeParties));
+console.log(getPlanDetails1(attendeeParties));
