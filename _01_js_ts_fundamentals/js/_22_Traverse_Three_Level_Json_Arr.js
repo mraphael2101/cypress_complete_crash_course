@@ -31,6 +31,23 @@ var attendeesParties = [
     }
 ]
 
+// const attParties = [];
+// for (let i = 0; i < attendeesParties.length; i++) {
+//
+//     const data = {
+//         planId: attendeesParties[i].planId,
+//         names: []
+//     };
+//
+//     for (let j = 0; j < attendeesParties[i].parties[0].attendees.length; j++) {
+//         data.names.push(attendeesParties[i].parties[0].attendees[j].name);
+//     }
+//
+//     attParties.push(data);
+// }
+// const obj = { attParties }
+// console.log(obj)
+
 const attParties = [];
 for (let i = 0; i < attendeesParties.length; i++) {
 
@@ -45,7 +62,6 @@ for (let i = 0; i < attendeesParties.length; i++) {
 
     attParties.push(data);
 }
-
 console.log(attParties)
 
 // for (let i = 0; i < myArr.length; i++) {
