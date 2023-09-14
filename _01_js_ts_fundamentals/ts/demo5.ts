@@ -1,4 +1,4 @@
-const body = {
+const sampleBody = {
     "reply":
         [
             {
@@ -36,9 +36,8 @@ const body = {
         ]
 };
 
-function validateBody(body) {
-    // Iterate over the reply objects.
-    for (const reply of body.reply) {
+function validateBody(sampleBody) {
+    for (const reply of sampleBody.reply) {
         // Check if the info property is defined.
         if (reply.info) {
             // Iterate over the info objects in each reply object.
@@ -75,4 +74,4 @@ function validateBody(body) {
     }
 }
 
-validateBody(body);
+validateBody(sampleBody);
