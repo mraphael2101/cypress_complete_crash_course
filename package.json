@@ -33,6 +33,7 @@
     "@aws-sdk/lib-dynamodb": "3.370.0",
     "@badeball/cypress-cucumber-preprocessor": "^17.2.1",
     "@cypress/browserify-preprocessor": "latest",
+    "chai": "^4.3.8",
     "cypress": "^12.17.3"
   },
   "devDependencies": {
