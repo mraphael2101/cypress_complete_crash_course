@@ -3,14 +3,19 @@ const body = {
         [
             {
                 "id": "abc",
-                // The `info` property is not defined for this object.
+                "info": [
+                    {
+                        "name": "name1",
+                        "age": "21"
+                    }
+                ]
             },
             {
                 "id": "abc",
                 "info": [
                     {
-                        "name": "name1",
-                        "age": "21"
+                        "name": "name5",
+                        "age": "27"
                     },
                     {
                         "name": "",
@@ -32,9 +37,7 @@ const body = {
 };
 
 function validateBody(body) {
-    // Iterate over the reply objects.
     for (const reply of body.reply) {
-        // Check if the info property is defined.
         if (reply.info) {
             // Iterate over the info objects in each reply object.
             for (const info of reply.info) {
