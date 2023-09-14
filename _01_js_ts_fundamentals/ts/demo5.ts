@@ -37,7 +37,9 @@ const body = {
 };
 
 function validateBody(body) {
+    // Iterate over the reply objects.
     for (const reply of body.reply) {
+        // Check if the info property is defined.
         if (reply.info) {
             // Iterate over the info objects in each reply object.
             for (const info of reply.info) {
@@ -51,6 +53,11 @@ function validateBody(body) {
                     // Check if the reasons property is populated.
                     if (info.reasons.length === 0) {
                         throw new Error("The reasons property must be populated.");
+                    }
+
+                    // Check if the id property is defined.
+                    if (!reply.id) {
+                        throw new Error("The id property must be defined.");
                     }
 
                     // Iterate over the reasons objects.
