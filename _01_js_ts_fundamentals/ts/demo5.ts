@@ -1,3 +1,7 @@
+import chai from 'chai';
+import chaiJsonSchema from 'chai-json-schema';
+chai.use(chaiJsonSchema);
+
 const sampleBody = {
     "reply":
         [
@@ -36,35 +40,50 @@ const sampleBody = {
         ]
 };
 
-function validateBody(body) {
-    // Iterate over the reply objects.
-    for (const reply of body.reply) {
-        // Check if the info property is defined.
+function validateBody(sampleBody) {
+    let someSchema = {
+        type: 'array', // type of the schema is array which means that the schema must be an array of objects
+        required: ['reasons'], // required property specifies the names of the properties that must be present in each object in the array. In this case, reasons
+        properties: {
+            // properties property defines the properties of each object in the array. in this case, reasons
+            errors: {
+                // reasons property is an array of objects that has the following properties
+                type: 'array',
+                minItems: 1,
+                items: {
+                    type: 'object',
+                    required: ['first', 'second'],
+                    properties: {
+                        first: { type: 'string' },
+                        second: { type: 'string' }
+                    }
+                }
+            }
+        }
+    }
+
+    for (const reply of sampleBody.reply) {
+        if (!reply.id || reply.id.trim() === '') {
+            throw new Error("The id property must be defined and cannot be an empty string.");
+        }
         if (reply.info) {
-            // Iterate over the info objects in each reply object.
             for (const info of reply.info) {
-                // Check if the name property is blank.
-                if (info.name === "") {
-                    // Check if the deceased property is false.
+                if (
+                    info.name === undefined ||
+                    info.name === "" ||
+                    info.name === null
+                ) {
                     if (info.deceased === true) {
                         throw new Error("The deceased property must be false if the name property is blank.");
                     }
 
-                    // Check if the reasons property is populated.
                     if (info.reasons.length === 0) {
                         throw new Error("The reasons property must be populated.");
                     }
 
-                    // Check if the id property is defined.
-                    if (!reply.id) {
-                        throw new Error("The id property must be defined.");
-                    }
-
-                    // Iterate over the reasons objects.
                     for (const reason of info.reasons) {
-                        // Check if the `first` and `second` keys are present in the reasons object.
                         if ("first" in reason && "second" in reason) {
-                            // Do nothing.
+                            assert.jsonSchema(info.reasons, someSchema);
                         } else {
                             throw new Error("The reasons object must have the `first` and `second` key value pairs.");
                         }

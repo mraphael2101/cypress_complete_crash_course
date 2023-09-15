@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "target": "es5",
     "lib": ["es6", "dom"],
-    "types": ["cypress"]
+    "types": ["cypress"],
+    "allowSyntheticDefaultImports": true
   },
   "include": ["**/*.ts"]
 }
