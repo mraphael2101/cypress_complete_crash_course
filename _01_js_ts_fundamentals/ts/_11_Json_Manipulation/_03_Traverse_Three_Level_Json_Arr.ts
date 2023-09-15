@@ -45,8 +45,8 @@ for (let i = 0; i < attendeesParties.length; i++) {
 
     attParties.push(data);
 }
-const obj = { attParties }
-console.log(obj)
+const obj2 = { attParties }
+console.log(obj2)
 
 // const attParties = [];
 // for (let i = 0; i < attendeesParties.length; i++) {
