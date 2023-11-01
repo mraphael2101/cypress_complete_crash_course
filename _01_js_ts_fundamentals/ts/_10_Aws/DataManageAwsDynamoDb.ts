@@ -8,7 +8,7 @@ import {
   BatchWriteCommand,
   DeleteCommand,
   ScanCommand,
-  DynamoDBDocumentClient, PutCommand
+  DynamoDBDocumentClient, PutCommand, ExecuteStatementCommand
 } from '@aws-sdk/lib-dynamodb';
 var tableName1 = 'table1'
 var region = 'eu-west-1'
@@ -198,4 +198,14 @@ export const deleteTable = async () => {
   const response = await client.send(command);
   console.log(response);
 
+};
+
+export const getDataViaSqlByAttr = async (attrValue: number) => {
+  const command = new ExecuteStatementCommand({
+    Statement: `select * from table1 where attr= ${attrValue}`
+  });
+
+  const response = await docClient.send(command);
+  // cy.log(JSON.stringify(response.Items));
+  return JSON.stringify(response.Items);
 };
