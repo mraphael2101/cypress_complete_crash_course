@@ -40,6 +40,7 @@
     "chai": "^4.3.8",
     "chai-json-schema": "^1.5.1",
     "cypress-iframe": "^1.0.1",
+    "cypress-screenplay": "^0.5.67",
     "multiple-cucumber-html-reporter": "^3.4.0"
   }
 }

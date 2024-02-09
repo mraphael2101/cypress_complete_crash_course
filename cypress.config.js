@@ -12,7 +12,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
 
   defaultCommandTimeout: 5000,
-
+  // These variables take precedence over any declared in yaml
   env: {
     url: "https://rahulshettyacademy.com"
   },
