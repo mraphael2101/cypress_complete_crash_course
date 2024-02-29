@@ -41,6 +41,10 @@
     "chai-json-schema": "^1.5.1",
     "cypress-iframe": "^1.0.1",
     "cypress-screenplay": "^0.5.67",
-    "multiple-cucumber-html-reporter": "^3.4.0"
+    "multiple-cucumber-html-reporter": "^3.4.0",
+    "cross-fetch": "^4.0.0",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.43.0"
   }
 }

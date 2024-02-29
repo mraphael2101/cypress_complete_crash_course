@@ -1,0 +1,103 @@
+# YAML script to interrogate AWS Dynamo DB via OIDC Provider
+
+name: sequential_test_execution
+on:
+  # workflow_dispatch event creates a btn on dashboard & waits for user to manually trigger the workflow
+  workflow_dispatch:
+    inputs:
+      Testcycle:
+        description: 'Testcycle'
+        required: true
+        default: 'TEST_SUITE_1'
+
+      environment:
+        description: 'Target environment for execution'
+        required: true
+        type: choice
+        default: 'TEST'
+        options:
+          - DEV
+          - TEST
+
+jobs:
+  Test_Execution:
+    name: run_automated_tests  # first job
+
+    # This code block is mandatory and is needed to load action inputs into AWS
+    # tbd
+
+    # if: always() ensures that the job it's attached to always runs when the workflow is triggered, regardless
+    # of any other conditions in the workflow or the success/failure of previous steps
+    if: always()
+    runs-on: ubuntu-latest  # Platform for execution
+    environment: ${{ inputs.environment }}
+    #    env:
+    #      ACTIONS_RUNNER_DEBUG: true
+
+    steps:
+      # Action checks-out the repository under $GITHUB_WORKSPACE, so that the workflow can access it
+      - name: Checkout -> Get Workspace Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          cache-dependency-path: package-lock.json
+          node-version: 20.x
+      - name: Install dependencies
+        run: npm ci --no-fund
+
+      # library brings Fetch API functionality to Node.js (enabler to make network requests in your code)
+      - run: npm install node-fetch@3.3.1
+
+      # Necessary to grant permissions to AWS resources
+      - name: Configure AWS Credentials
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.AWS_GITHUB_OIDC_CREDENTIALS }}
+          output-credentials: true
+
+      - name: Print AWS Credentials
+        run: aws sts get-caller-identity
+
+      # Prints the param values that the end-user has inputted from the GitHub context object
+      # e.g. test cycle, and environment
+      - name: user inputs
+        run:  echo "${{ toJSON(github.event.inputs) }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Download feature files from zephyr
+        run: node scripts/loadFeature.mjs
+        env:
+          TEST_CYCLE_KEY: ${{github.event.inputs.Testcycle}}
+          ZEPHYR_TOKEN: ${{ secrets.ZEPHYR_TOKEN }}
+
+      # Check authentication and authorisation is successful
+      - name: List Dynamo DB Table Physical Structure
+        run:
+          aws dynamodb describe-table --table-name my_db_table_name
+
+      - name: Set and Print out Cypress credentials
+        run: |
+          export CYP_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          export CYP_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+          export CYP_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
+          echo $CYP_AWS_ACCESS_KEY_ID
+          echo $CYP_AWS_SECRET_ACCESS_KEY
+          echo $CYP_AWS_SESSION_TOKEN
+
+      - name: Cypress run with env
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run cypress:execution
+        env:
+          CYPRESS_MODE: 'zephyr/gitform'
+          CYPRESS_TEST_ENV: ${{ github.event.inputs.environment}}
+          CYPRESS_AWS_ACCESS_KEY_ID: $CYP_AWS_ACCESS_KEY_ID
+          CYPRESS_AWS_SECRET_ACCESS_KEY: $CYP_AWS_SECRET_ACCESS_KEY
+          CYPRESS_AWS_SESSION_TOKEN: $CYP_AWS_SESSION_TOKEN
+          CYPRESS_ZEPHYR_TOKEN: ${{ secrets.ZEPHYR_TOKEN }}
+          CYPRESS_IS_ZEPHYR: true
+          CYPRESS_DYNAMO_DB: true

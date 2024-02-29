@@ -1,0 +1,39 @@
+# Docker image comes with yarn preinstalled
+image:
+  node: 16.16.0
+
+# Command to install all the packages before running anything
+before_script:
+  - npm install ts-node --save-dev
+  - npm install typescript -g
+  - npm install typescript -save-dev
+  - apt-get update -qq && apt-get install
+  - npm install -g chromedriver@102.0.0
+  - apt-get install -y wget
+  - wget https://dl.google.com/Linux/direct/google-chrome-stable_current_amd64.deb
+  - apt-get -y install •/google-chrome-stable_current_amd64.deb
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  before_script:
+    - yarn config set cache-folder • yarn
+    - yarn add @my-test-framework --dev
+    - yarn add @test-framework-selenium -dev
+    - yarn add @test-framework-cucumber -dev
+    - yarn add @cucumber/cucumber -dev
+    - yarn add ts-node --dev
+  script:
+    - echo 'build stage started'
+    - yarn
+
+# Execute cucumber/selenium tests
+test:
+  stage: test
+  script:
+    - echo 'test stage started'
+    - yarn cucumber-js test/my-domain/features/component/*.feature -t @wip_unique --profile local
+    - echo 'tests executed'

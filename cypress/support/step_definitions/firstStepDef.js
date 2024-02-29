@@ -1,5 +1,7 @@
 import HomePage from "../../pages/HomePage";
 import { Given,When,Then } from "@badeball/cypress-cucumber-preprocessor";
+import { DYNAMO_DB } from "../constants";
+import myApiInstance from "../pojos/myApi";
 
 const homePage = new HomePage()
 
@@ -69,4 +71,14 @@ Given("I demonstrate passing vals after promise is resolved {string}",  (attrVal
         {
             cy.log("promise resolved then print " + temp)
         })
+});
+
+Then('I verify that the token was removed from the sample table in Dynamo Db', async () => {
+    if (DYNAMO_DB()) {
+        cy.task('performDynamoDbQueryOutsideCypress_GetAllData', dynamoDbTableName).then(queryResultset => {
+            if (queryResultset !== null && typeof queryResultset === 'string') {
+                myApiInstance.validateTokenIsNotPresentInDynamoDbTable(JSON.parse(queryResultset));
+            }
+        });
+    }
 });
