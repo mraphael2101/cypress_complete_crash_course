@@ -7,7 +7,7 @@ chai.use(chaiJsonSchema);
  *  @description Contract checking enforced to ensure the integrity and consistency of the data:
  *  -> Presence of the required fields
  *  -> Absence of unexpected fields
- *  -> Nesting of objects and arrays according to teh agreed json structure */
+ *  -> Nesting of objects and arrays according to the agreed json structure */
 
 const sampleBody = {
     "reply":
