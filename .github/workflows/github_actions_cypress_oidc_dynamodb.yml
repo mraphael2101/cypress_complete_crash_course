@@ -79,14 +79,26 @@ jobs:
         run:
           aws dynamodb describe-table --table-name my_db_table_name
 
-      - name: Set and Print out Cypress credentials
+      # Standard approach does not work
+      #      - name: Set and Print out Cypress credentials
+      #        run:
+      #          export CY_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+      #          export CY_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+      #          export CY_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
+      #          echo $CY_AWS_ACCESS_KEY_ID
+      #          echo $CY_AWS_SECRET_ACCESS_KEY
+      #          echo $CY_AWS_SESSION_TOKEN
+
+      # Standard approach does not work
+      #      - name: Set and Print out Cypress credentials
+      #        run:
+      #          export CY_AWS_ACCESS_KEY_ID=${{ steps.creds.outputs.AWS_ACCESS_KEY_ID }}
+      #          export CY_AWS_SECRET_ACCESS_KEY=${{ steps.creds.outputs.AWS_SECRET_ACCESS_KEY }}
+      #          export CY_AWS_SESSION_TOKEN=${{ steps.creds.outputs.AWS_SESSION_TOKEN }}
+
+      - name: Print Variables to JSON
         run: |
-          export CYP_AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-          export CYP_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-          export CYP_AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
-          echo $CYP_AWS_ACCESS_KEY_ID
-          echo $CYP_AWS_SECRET_ACCESS_KEY
-          echo $CYP_AWS_SESSION_TOKEN
+          echo "{\"AWS_ACCESS_KEY_ID\": \"${{ env.AWS_ACCESS_KEY_ID }}\",\"AWS_SECRET_ACCESS_KEY\": \"${{ env.AWS_SECRET_ACCESS_KEY }}\",\"AWS_SESSION_TOKEN\": \"${{ env.AWS_SESSION_TOKEN }}\"}" > credentials.json
 
       - name: Cypress run with env
         uses: cypress-io/github-action@v5
@@ -95,9 +107,15 @@ jobs:
         env:
           CYPRESS_MODE: 'zephyr/gitform'
           CYPRESS_TEST_ENV: ${{ github.event.inputs.environment}}
-          CYPRESS_AWS_ACCESS_KEY_ID: $CYP_AWS_ACCESS_KEY_ID
-          CYPRESS_AWS_SECRET_ACCESS_KEY: $CYP_AWS_SECRET_ACCESS_KEY
-          CYPRESS_AWS_SESSION_TOKEN: $CYP_AWS_SESSION_TOKEN
+          #          AWS_ACCESS_KEY_ID: $CY_AWS_ACCESS_KEY_ID
+          #          AWS_SECRET_ACCESS_KEY: $CY_AWS_SECRET_ACCESS_KEY
+          #          AWS_SESSION_TOKEN: $CY_AWS_SESSION_TOKEN
+          #          AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.CY_AWS_ACCESS_KEY_ID }}
+          #          AWS_SECRET_ACCESS_KEY: ${{ steps.creds.outputs.CY_AWS_SECRET_ACCESS_KEY }}
+          #          AWS_SESSION_TOKEN: ${{ steps.creds.outputs.CY_AWS_SESSION_TOKEN }}
+          CYPRESS_AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+          CYPRESS_AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          CYPRESS_AWS_SESSION_TOKEN: ${{ env.AWS_SESSION_TOKEN }}
           CYPRESS_ZEPHYR_TOKEN: ${{ secrets.ZEPHYR_TOKEN }}
           CYPRESS_IS_ZEPHYR: true
           CYPRESS_DYNAMO_DB: true

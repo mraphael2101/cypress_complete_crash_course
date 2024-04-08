@@ -13,6 +13,6 @@ export const IS_ZEPHYR = () => {
 
 export const DYNAMO_DB = () => {
     if (Cypress) {
-        return Cypress.env('CYPRESS_DYNAMO_DB');
+        return Cypress.env('DYNAMO_DB');
     }
 }
