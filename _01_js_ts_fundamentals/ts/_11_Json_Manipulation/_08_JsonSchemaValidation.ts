@@ -2,6 +2,13 @@ import chai from 'chai';
 import chaiJsonSchema from 'chai-json-schema';
 chai.use(chaiJsonSchema);
 
+/** @author Mark Raphael
+ *  @function validateJsonResponseContract
+ *  @description Contract checking enforced to ensure the integrity and consistency of the data:
+ *  -> Presence of the required fields
+ *  -> Absence of unexpected fields
+ *  -> Nesting of objects and arrays according to the agreed json structure */
+
 const sampleBody = {
     "reply":
         [
@@ -40,7 +47,7 @@ const sampleBody = {
         ]
 };
 
-function validateBody(sampleBody) {
+function validateJsonResponseContract(sampleBody) {
     let someSchema = {
         type: 'array', // type of the schema is array which means that the schema must be an array of objects
         required: ['reasons'], // required property specifies the names of the properties that must be present in each object in the array. In this case, reasons
@@ -94,4 +101,4 @@ function validateBody(sampleBody) {
     }
 }
 
-validateBody(sampleBody);
+validateJsonResponseContract(sampleBody);
