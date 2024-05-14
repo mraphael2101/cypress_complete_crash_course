@@ -16,3 +16,9 @@ export const DYNAMO_DB = () => {
         return Cypress.env('DYNAMO_DB');
     }
 }
+
+export const MY_FIRST_TEST_STEP = () => {
+    if (Cypress) {
+        return Cypress.env('MY_FIRST_TEST_STEP');
+    }
+}
