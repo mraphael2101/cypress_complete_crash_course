@@ -1,16 +1,9 @@
 import HomePage from "../../pages/HomePage";
 import { Given,When,Then } from "@badeball/cypress-cucumber-preprocessor";
-import { DYNAMO_DB } from "../constants";
+import {DYNAMO_DB, SAMPLE_TEST_SUITE} from "../constants";
 import myApiInstance from "../pojos/myApi";
 const homePage = new HomePage()
 const MY_TABLE_NAME = 'some_table_name';
-
-// From Cucumber
-// Before({tags: '@cukehook'}, ()=> {
-// })
-//
-// After({tags: '@cukehook'}, ()=> {
-// })
 
 // Mocha hooks
 before(async function () {
@@ -34,8 +27,8 @@ Given('I open the Ecommerce Page', function () {
 })
 
 When('I add items to my Cart', function () {
-    // cy.log("From fixtures -> " + this.data2.name)
-    // homePage.getEditBox().click()
+    cy.log("From fixtures -> " + this.data2.name)
+    homePage.getEditBox().click()
 })
 
 When('I fill in the form details', function (dataTable) {
@@ -80,16 +73,15 @@ const getKeysArr = (dataTable, rowIndex) => {
         const jsonKey = dataTable.rows()[rowIndex][1]; // 1 represents the second column
         const parsedKeys = JSON.parse(jsonKey);
 
-        // if (parsedKeys.length > 0) {
-        //     parsedKeys.forEach((key: { S: string }) => {
-        //         keyArr.push(key.S);
-        //     });
-        // }
+        if (parsedKeys.length > 0) {
+            parsedKeys.forEach((key: { S: string }) => {
+                keyArr.push(key.S);
+            });
+        }
     } catch (error) {
         throw new Error('Error parsing Key:');
     }
 
-    // cy.logger(`Extracted EligibilityKeys: ${eligibilityKeysArr}`)
     return keyArr;
 }
 
@@ -104,7 +96,6 @@ Then('I verify that the token was removed from the sample table in Dynamo Db', a
         });
     }
 });
-
 
 Given('the fictitious table items are configured as per below',
     async (dataTable) =>
@@ -128,7 +119,7 @@ Given('the fictitious table items are configured as per below',
             }
         }
 
-        if (DYNAMO_DB() && ROLLOUT_ELIG()) {
+        if (DYNAMO_DB() && SAMPLE_TEST_SUITE()) {
             if (items.length !== 0) {
                 cy.task('performDbQueryOutsideCypress_InsertAllDataAsBatch', {
                     tableName: 'SomeTableName',
