@@ -10,11 +10,11 @@ Feature: End to end Ecommerce validation
       | joe blogs    | Male   |
       | karren blogs | Female |
 
-
 #  @Smoke
 #  Scenario Outline: Ecommerce products delivery 2
 #    Given I open the Ecommerce Page
 #    Then I should see a flash message saying <username> <password>
+#    And I traverse through the datatables in different ways
 #
 #    Examples:
 #      | username | password     |

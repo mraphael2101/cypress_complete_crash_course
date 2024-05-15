@@ -51,7 +51,7 @@ Given("a POST Request is submitted to Service for a {string}", function (typeA) 
     cy.log(typeA);
 });
 
-var temp;
+let temp;
 
 Given("I demonstrate passing vals after promise is resolved {string}",  (attrVal)=> {
     cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/")
@@ -68,7 +68,6 @@ Given("I demonstrate passing vals after promise is resolved {string}",  (attrVal
 
 const getKeysArr = (dataTable, rowIndex) => {
     const keyArr= [''];
-
     try {
         const jsonKey = dataTable.rows()[rowIndex][1]; // 1 represents the second column
         const parsedKeys = JSON.parse(jsonKey);
@@ -81,7 +80,6 @@ const getKeysArr = (dataTable, rowIndex) => {
     } catch (error) {
         throw new Error('Error parsing Key:');
     }
-
     return keyArr;
 }
 
@@ -133,3 +131,26 @@ Given('the fictitious table items are configured as per below',
             }
         }
     });
+Then('I traverse through the datatables in different ways',
+    async (dataTable) =>
+    {
+        /* dataTable.rows() Returns a two-dimensional array of strings, where each inner array represents a row in
+        the data table. Each element within the inner array corresponds to a cell value in that particular row.
+        Useful when you need to access data in a more structured way, especially if you have multiple columns or want
+        to perform operations on specific rows. */
+        const rows = dataTable.rows();
+        for (const row of rows) {
+            console.log(row); // Each row is an array of strings (cell values)
+        }
+
+        /* dataTableHashes() Returns an array of objects, where each object represents a row in the data table.
+        The object's keys correspond to the header names of the data table, and the values correspond to the cell
+        values in that row.
+        Ideal when you want to directly access data by column names, making it more readable and easier to work with
+        for scenarios involving named columns. */
+        const rowObjects = dataTable.hashes();
+        for (const rowObject of rowObjects) {
+            console.log(rowObject.name, rowObject.age); // Access data by column names
+        }
+    }
+);
