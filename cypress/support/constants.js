@@ -22,3 +22,9 @@ export const MY_FIRST_TEST_STEP = () => {
         return Cypress.env('MY_FIRST_TEST_STEP');
     }
 }
+
+export const SAMPLE_TEST_SUITE = () => {
+    if (Cypress) {
+        return Cypress.env('SAMPLE_TEST_SUITE');
+    }
+}

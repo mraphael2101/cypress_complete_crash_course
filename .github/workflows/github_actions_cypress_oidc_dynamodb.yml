@@ -119,8 +119,7 @@ jobs:
           CYPRESS_ZEPHYR_TOKEN: ${{ secrets.ZEPHYR_TOKEN }}
           CYPRESS_IS_ZEPHYR: true
           CYPRESS_DYNAMO_DB: true
-
-
+          SAMPLE_TEST_SUITE: true
 
             # - name: Upload E2E test reports
             #   if: always()
