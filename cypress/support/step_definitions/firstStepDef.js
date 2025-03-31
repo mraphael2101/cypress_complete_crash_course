@@ -46,9 +46,8 @@ When('I fill in the form details', function (dataTable) {
     });
 })
 
-Then(/^I should see a flash message saying (.*) (.*)$/, function (username, password) {
-    cy.log(username)
-    if(username === 'ts01') {
+Then(/^I should see a flash message saying (.*) (.*)$/, (username, password) => {
+    if(username === 'abc01') {
         cy.log(password);
     }
 });
